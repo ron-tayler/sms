@@ -1,0 +1,8 @@
+# IDE Files
+/.idea
+
+# Config
+config.php
+
+# Logs
+/logs
