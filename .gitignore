@@ -1,8 +1,11 @@
 # IDE Files
 /.idea
 
+# Composer vendor
+/vendor
+
 # Config
 config.php
 
 # Logs
-/logs
+/storage/logs
