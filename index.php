@@ -25,17 +25,17 @@ unset($debug_type, $debug_text);
 
 // Автозагрузка классов
 spl_autoload_extensions('.php');
-spl_autoload_register(function($class) {
+spl_autoload_register(function($name) {
     preg_match(
         "/^(?:(?'namespace'(?'type'[^\\\\]+)(?'path'(?:\\\\[^\\\\]+)*))\\\\)?(?'class'[^\\\\]+)$/",
-        $class,
+        $name,
         $matches
     );
     $type = $matches['type'];
     $namespace = $matches['namespace'];
     $path = strtolower(str_replace('\\','/',$matches['path']));
     $class = strtolower($matches['class']);
-    $full_class = $namespace.'\\'.$class;
+    $full_class = $namespace.'\\'.$matches['class'];
     $file = "$path/$class.php";
     switch($type){
         case 'Controller':
@@ -59,9 +59,9 @@ spl_autoload_register(function($class) {
         default:
             $file = DIR_APP.'/'.strtolower($type).$file;
     }
-    if(!is_file($file))  throw new Exception("File '$file' not found");
+    if(!is_file($file))  throw new Exception("File '$file' not found, autoload class '$name'");
     include_once $file;
-    if(!class_exists($full_class)) throw new Exception("Class $full_class not exists");
+    if(!class_exists($full_class) and !interface_exists($full_class)) throw new Exception("Class $full_class not exists, autoload class '$name'");
 });
 
 try{
@@ -115,7 +115,7 @@ try{
         'database'=>DB_NAME
     ]);
 
-    Router::map('','Test::test',['GET']);
+    Router::map('/','Test::test',['GET']);
 
     Router::execute();
 

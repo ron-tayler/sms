@@ -1,6 +1,4 @@
-<?php
-
-namespace Engine;
+<?php namespace Engine;
 /**
  * Interface IController
  * @package YouInRoll.com

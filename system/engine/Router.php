@@ -1,5 +1,7 @@
 <?php namespace Engine;
 
+use Error\Engine;
+
 /**
  * Class Router - Маршрутизатор запросов
  * @package Engine

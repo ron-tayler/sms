@@ -1,6 +1,6 @@
 {
     "require": {
-        "vendor/twig/twig": "3.3.2",
+        "twig/twig": "3.3.2",
         "ext-json": "*",
         "ext-mysqli": "*"
     }
