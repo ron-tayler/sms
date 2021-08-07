@@ -1,0 +1,8 @@
+#AddDefaultCharset utf-8
+
+RewriteEngine on
+
+RewriteBase /
+
+RewriteCond %{REQUEST_FILENAME} !\.(php|html|ico|png|jpg|jpeg|css|js|svg)$
+RewriteRule ^(.*?)/?$ index.php?route=$1 [L,QSA]

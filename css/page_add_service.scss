@@ -1,0 +1,18 @@
+.page{
+  display: flex;
+  justify-content: center;
+}
+.container{
+  width: 700px;
+  border-radius: 10px;
+  background: #cccccc;
+  padding: 10px;
+  position: relative;
+  form{
+    display: flex;
+    flex-direction: column;
+  }
+}
+label{
+  margin-bottom: 10px;
+}

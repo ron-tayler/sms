@@ -6,8 +6,11 @@ use Engine\Response;
 use Engine\Router;
 use Error\Base;
 use Library\DB;
+use Library\Template;
+use Library\User;
 
 // PHP init
+date_default_timezone_set('UTC');
 error_reporting(E_ALL);
 $time = explode(" ", microtime());
 define('TIME_SEC',$time[1]);
@@ -34,8 +37,8 @@ spl_autoload_register(function($name) {
     $type = $matches['type'];
     $namespace = $matches['namespace'];
     $path = strtolower(str_replace('\\','/',$matches['path']));
-    $class = strtolower($matches['class']);
-    $full_class = $namespace.'\\'.$matches['class'];
+    $class = $matches['class'];
+    $full_class = $namespace.'\\'.$class;
     $file = "$path/$class.php";
     switch($type){
         case 'Controller':
@@ -43,6 +46,9 @@ spl_autoload_register(function($name) {
             break;
         case 'Model':
             $file = DIR_MODEL.$file;
+            break;
+        case 'View':
+            $file = DIR_VIEW.$file;
             break;
         case 'Error':
             $file = DIR_SYSTEM.'/Error'.$file;
@@ -57,7 +63,7 @@ spl_autoload_register(function($name) {
             $file = DIR_ENGINE.$file;
             break;
         default:
-            $file = DIR_APP.'/'.strtolower($type).$file;
+            $file = DIR_CLASSES.'/'.strtolower($type).$file;
     }
     if(!is_file($file))  throw new Exception("File '$file' not found, autoload class '$name'");
     include_once $file;
@@ -103,6 +109,7 @@ try{
     require_once DIR_APP.'/vendor/autoload.php';
 
     Request::init();
+    //User::tokenAuth($_COOKIE['access_token']);
 
     // Инициализация Базы Данных
     Loader::library('DB');
@@ -115,7 +122,20 @@ try{
         'database'=>DB_NAME
     ]);
 
-    Router::map('/','Test::test',['GET']);
+    Router::map('/','Home::home',['GET']);
+    //Router::map('/login','User::login',['GET']);
+    Router::map('/service/:id','Service::page',['GET'],['id'=>'[1-9][0-9]*']);
+    Router::map('/services','Service::list',['GET']);
+    Router::map('/service/add','Service::add',['GET','POST']);
+    Router::map('/service/:id/edit','Service::edit',['GET'],['id'=>'[1-9][0-9]*']);
+    Router::map('/service/:id/delete','Service::delete',['GET'],['id'=>'[1-9][0-9]*']);
+
+    Router::map('/countries','Country::list',['GET']);
+    Router::map('/country/add','Country::add',['GET','POST']);
+    Router::map('/country/:id/delete','Country::delete',['GET'],['id'=>'[1-9][0-9]*']);
+
+    Template::init(DIR_TEMPLATE);
+    Template::setTitleTemplate('%s | SMS','SMS');
 
     Router::execute();
 

@@ -1,0 +1,22 @@
+<link rel="stylesheet" href="/css/page_services.css">
+<div class="container">
+    <table>
+        <thead>
+        <tr>
+            <td>Название</td>
+            <td>Действие</td>
+        </tr>
+        </thead>
+        <tbody>
+        {% for country in countries %}
+            <tr>
+                <td>{{ country.name }}</td>
+                <td>
+                    <a href="/country/{{ country.id }}/delete">Удалить</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a href="/country/add" class="btn btn-blue btn-add">+</a>
+</div>

@@ -1,0 +1,29 @@
+<link rel="stylesheet" href="/css/page_services.css">
+<div class="container">
+    <table>
+        <thead>
+        <tr>
+            <td>Название</td>
+            <td>Страна</td>
+            <td>Кол-во номеров</td>
+            <td>Цена</td>
+            <td>Действие</td>
+        </tr>
+        </thead>
+        <tbody>
+        {% for service in services %}
+        <tr>
+            <td>{{ service.name }}</td>
+            <td>{{ service.country }}</td>
+            <td>{{ service.count }}</td>
+            <td class="column-price">{{ service.price }} руб.</td>
+            <td>
+                <a href="/service/{{ service.id }}/edit">Редактировать</a>
+                <a href="/service/{{ service.id }}/delete">Удалить</a>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a href="/service/add" class="btn btn-blue btn-add">+</a>
+</div>

@@ -25,8 +25,6 @@ class Loader {
         self::load($name,DIR_CONTROLLER);
         $class = 'Controller\\'.str_replace('/','\\',$name);
         if(!class_exists($class)) throw new ExceptionBase('Класс '.$class.' Не удалось объявить',5);
-        if(!is_callable(Array($class, "init"))) throw new ExceptionBase('Невозможно вызвать метод '.$class.'::init',5);
-        call_user_func(Array($class, "init"));
     }
 
     /**

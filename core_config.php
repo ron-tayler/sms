@@ -29,20 +29,20 @@ define('DIR_LANGUAGE',      DIR_APP.'/language');
 define('DIR_VIEW',          DIR_APP.'/view');
 define('DIR_STORAGE',       DIR_APP.'/storage');
 define('DIR_LIB',           DIR_APP.'/lib');
+define('DIR_TEMPLATE',      DIR_APP.'/template');
+define('DIR_JS',            DIR_APP.'/js');
+define('DIR_CSS',           DIR_APP.'/css');
+define('DIR_CLASSES',       DIR_APP.'/classes');
 
 define('DIR_ENGINE',        DIR_SYSTEM.'/engine');
-
-define('DIR_TEMPLATE',      DIR_VIEW.'/template');
-define('DIR_JS',            DIR_VIEW.'/js');
-define('DIR_CSS',           DIR_VIEW.'/css');
 
 define('DIR_IMAGE',         DIR_STORAGE.'/image');
 define('DIR_FILE',          DIR_STORAGE.'/file');
 define('DIR_VIDEO',         DIR_STORAGE.'/video');
-define('DIR_UPLOAD',        DIR_STORAGE . '/upload');
-define('DIR_DOWNLOAD',      DIR_STORAGE . '/download');
-define('DIR_LOGS',          DIR_STORAGE . '/logs');
-define('DIR_SESSION',       DIR_STORAGE . '/session');
+define('DIR_UPLOAD',        DIR_STORAGE.'/upload');
+define('DIR_DOWNLOAD',      DIR_STORAGE.'/download');
+define('DIR_LOGS',          DIR_STORAGE.'/logs');
+define('DIR_SESSION',       DIR_STORAGE.'/session');
 define('DIR_CACHE',         DIR_STORAGE.'/cache');
 
 define('DIR_CACHE_FILE',    DIR_CACHE.'/file');

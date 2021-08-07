@@ -1,0 +1,41 @@
+.page{
+  display: flex;
+  justify-content: center;
+}
+.container{
+  width: 700px;
+  border-radius: 10px;
+  background: #cccccc;
+  padding: 10px;
+  position: relative;
+}
+table{
+  width: 100%;
+}
+td{
+  padding: 5px 10px;
+}
+.column-price{
+  text-align: right;
+}
+thead{
+  background: #66A3D2;
+
+  td:first-child{
+    border-top-left-radius: 10px;
+  }
+  td:last-child{
+    border-top-right-radius: 10px;
+  }
+}
+tbody{
+  tr:nth-child(2n){
+    background: #66A3D280;
+  }
+}
+.btn-add{
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  text-decoration: none;
+}

@@ -1,0 +1,76 @@
+:root {
+  font-family: "Roboto Light", sans-serif;
+}
+
+header {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 60px;
+  background: #0B61A4;
+  display: flex;
+  justify-content: space-between;
+}
+header .logo {
+  display: flex;
+  text-decoration: none;
+}
+header .logo .logo__image {
+  margin-left: 10px;
+  margin-top: 10px;
+  height: 40px;
+  width: 40px;
+  border-radius: 40px;
+  background: #FF4040;
+}
+header .logo .logo__name {
+  margin-top: 10px;
+  margin-left: 10px;
+  font-size: 40px;
+  line-height: 40px;
+  color: white;
+}
+header .user-info {
+  height: 40px;
+  margin-top: 10px;
+  margin-right: 10px;
+  font-size: 40px;
+  line-height: 40px;
+  color: white;
+  text-decoration: none;
+}
+header .user-info a {
+  color: white;
+  text-decoration: none;
+}
+
+.page {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 10px;
+}
+
+.btn {
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.btn-blue {
+  color: white;
+  background: #3F92D2;
+  border: 1px solid #0B61A4;
+}
+
+.btn-blue:active {
+  background: #66A3D2;
+}
+
+/*# sourceMappingURL=base.css.map */

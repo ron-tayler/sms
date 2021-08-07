@@ -1,0 +1,58 @@
+.page{
+  display: flex;
+  justify-content: center;
+}
+.container {
+  width: 700px;
+  height: fit-content;
+}
+.cards-inputs{
+  padding-bottom: 10px;
+  & select{
+    margin-right: 10px;
+  }
+}
+.cards{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+
+  & .card{
+    cursor: pointer;
+    height: 150px;
+    border-radius: 10px;
+    background: #cccccc;
+    position: relative;
+
+    .card__top-left{
+      position: absolute;
+      top: 10px;
+      left: 10px;
+    }
+    .card__bottom-left{
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+    }
+    .card__bottom-right{
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+    }
+
+    .card__name{
+      font-size: 32px;
+    }
+    .card__count{
+      font-size: 16px;
+    }
+    .card__country{
+      font-size: 16px;
+      color: #00000080
+    }
+    .card__price{
+      font-size: 24px;
+      color: #00000080
+    }
+  }
+}

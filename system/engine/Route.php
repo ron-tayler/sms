@@ -1,6 +1,7 @@
 <?php
 
 namespace Engine;
+use Error\Server;
 use ExceptionBase;
 
 /**
@@ -43,10 +44,10 @@ class Route{
      */
     public function execute(array $params){
         // Первая группа полное имя Класса, Вторая группа Method
-        $reg = /** @lang PhpRegExp */ '/^((?:[A-Z][A-Za-z_]*)+(?:\/[A-Z][A-Za-z_]*)*)(?:::([a-z][A-Za-z_]+))?$/x';
+        $reg = /** @lang PhpRegExp */ '/^((?:[A-Z][A-Za-z_]*)+(?:\/[A-Z][A-Za-z_]*)*)::([a-z][A-Za-z_]+)$/x';
         if(preg_match($reg,$this->target,$match, PREG_UNMATCHED_AS_NULL)===1){
             $controller = $match[1];
-            $method = $match[2]??'index';
+            $method = $match[2];
         }else{
             throw new ExceptionBase("Target \'$this->target\' объявлен не правильно",5);
         }
@@ -54,7 +55,7 @@ class Route{
         Loader::controller($controller);
 
         $class = 'Controller\\'.str_replace('/','\\',$controller);
-        if(!is_callable(array($class, $method))) throw new ExceptionBase('Невозможно вызвать метод '.$class.'::'.$method,5);
+        if(!is_callable(array($class, $method))) throw new Server('Невозможно вызвать метод '.$class.'::'.$method,true);
 
         call_user_func(Array($class, $method),$params);
     }

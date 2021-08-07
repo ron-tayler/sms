@@ -1,0 +1,19 @@
+<header>
+    <a href="/" class="logo">
+        <div class="logo__image"></div>
+        <div class="logo__name">{{ logo_name }}</div>
+    </a>
+    <div class="menu">
+        {% if is_perm_countries %}<a class="btn btn-blue" href="/countries">Страны</a>{% endif %}
+        {% if is_perm_services %}<a class="btn btn-blue" href="/services">Сервисы</a>{% endif %}
+    </div>
+    {# Система авторизации выключена
+    <div class="user-info">
+        {% if user %}
+        {{ user.name }}
+        {% else %}
+        <a href="/login">Войти</a>
+        {% endif %}
+    </div>
+    #}
+</header>

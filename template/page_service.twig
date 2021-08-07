@@ -1,0 +1,20 @@
+<link rel="stylesheet" href="/css/page_service.css">
+<div class="container">
+    <h1 class="name">{{ service.name }}</h1>
+    <div class="country">Страна: {{ service.country }}</div>
+    <div class="count">Кол-во номеров: {{ service.count }}</div>
+    <table>
+        <thead>
+        <tr>
+            <td>История цен</td>
+        </tr>
+        </thead>
+        <tbody>
+            {% for price in service.prices %}
+                <tr>
+                    <td>{{ price.price }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>

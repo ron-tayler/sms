@@ -1,0 +1,27 @@
+<link rel="stylesheet" href="/css/page_add_service.css">
+<div class="container">
+    <form action="/service/add" method="post">
+        <label>
+            Название:
+            <input type="text" name="name" />
+        </label>
+        <label>
+            Страна:
+            <select name="country">
+                <option value="0">Любая</option>
+                {% for country in countries %}
+                    <option value="{{ country.id }}"
+                            {% if select_country_id==country.id %}
+                    selected
+                            {% endif %}>{{ country.name }}</option>
+                {% endfor %}
+            </select>
+        </label>
+        <label>
+            Цена:
+            <input type="text" name="price" />
+            руб.
+        </label>
+        <button class="btn btn-blue" type="submit">Создать</button>
+    </form>
+</div>
